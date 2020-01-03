@@ -12,6 +12,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Security.Cryptography;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace wovencode
@@ -23,9 +24,74 @@ namespace wovencode
 	public partial class Tools
 	{
 	
-		private const char 	CONST_DELIMITER 	= ';';
-		private const int 	MAX_LENGTH_NAME 	= 16;
+		protected const char CONST_DELIMITER 	= ';';
+		protected const int MAX_LENGTH_NAME 	= 16;
 	
+		protected static string sOldChecksum, sNewChecksum	= "";
+	
+		// ============================ PATH & DIRECTORIES ===============================
+		
+		// -------------------------------------------------------------------------------
+		// SetPath
+		// -------------------------------------------------------------------------------
+		public static string GetPath(string fileName) {
+#if UNITY_EDITOR
+        	return Path.Combine(Directory.GetParent(Application.dataPath).FullName, fileName);
+#elif UNITY_ANDROID
+        	return Path.Combine(Application.persistentDataPath, fileName);
+#elif UNITY_IOS
+        	return Path.Combine(Application.persistentDataPath, fileName);
+#else
+        	return Path.Combine(Application.dataPath, fileName);
+#endif			
+		}
+		
+		// ================================= SECURITY ====================================
+		
+		// -------------------------------------------------------------------------------
+		// GetChecksum
+		// -------------------------------------------------------------------------------
+		public static bool GetChecksum(string filepath)
+		{
+			
+			sNewChecksum = CalculateMD5(filepath);
+		
+			sOldChecksum = PlayerPrefs.GetString("CS", "");
+			
+			if (string.IsNullOrWhiteSpace(sOldChecksum))
+				SetChecksum(filepath);
+			
+			return (sOldChecksum == sNewChecksum);
+			
+		}
+		
+		// -------------------------------------------------------------------------------
+		// SetChecksum
+		// -------------------------------------------------------------------------------
+		public static void SetChecksum(string filepath)
+		{
+			sNewChecksum = CalculateMD5(filepath);
+			PlayerPrefs.SetString("CS", sNewChecksum);
+		}
+		
+		// -------------------------------------------------------------------------------
+		// CalculateMD5
+		// -------------------------------------------------------------------------------
+		public static string CalculateMD5(string filepath)
+		{
+			using (var md5 = MD5.Create())
+			{
+				using (var stream = File.OpenRead(filepath))
+				{
+					var hash = md5.ComputeHash(stream);
+					return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+				}
+			}
+		}
+		
+		// ================================= OTHER =======================================
+		
+		
 		// -------------------------------------------------------------------------------
 		// Returns the name of the passed method
 		// -------------------------------------------------------------------------------
@@ -33,7 +99,20 @@ namespace wovencode
 		{
 			return method.Method.Name;
 		}
-	
+		
+		// -------------------------------------------------------------------------------
+		// GetUserId
+		// -------------------------------------------------------------------------------
+		public static string GetUserId
+		{
+			get
+			{
+				return SystemInfo.deviceUniqueIdentifier.ToString();
+			}
+		}
+		
+		// ============================== VALIDATION =====================================
+		
 		// -------------------------------------------------------------------------------
 		// Validates a name by simply checking length and allowed characters
 		// Could be expanded here if required
@@ -61,7 +140,19 @@ namespace wovencode
 			byte[] hash = pbkdf2.GetBytes(20);
 			return BitConverter.ToString(hash).Replace("-", string.Empty);
 		}
-	
+		
+		// ============================== CONVERSION =====================================
+		
+		// -------------------------------------------------------------------------------
+		// ConvertToUnixTimestamp
+		// -------------------------------------------------------------------------------
+		public static double ConvertToUnixTimestamp(DateTime date)
+		{
+			DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+			TimeSpan diff = date.ToUniversalTime() - origin;
+			return Math.Floor(diff.TotalSeconds);
+		}
+		
 		// -------------------------------------------------------------------------------
 		// IntArrayToString
 		// -------------------------------------------------------------------------------
@@ -90,7 +181,7 @@ namespace wovencode
 		}
 
 		// -------------------------------------------------------------------------------
-		// ArrayContains
+		// ArrayContains (int)
 		// -------------------------------------------------------------------------------
 		public static bool ArrayContains(int[] array, int number)
 		{
@@ -103,7 +194,7 @@ namespace wovencode
 		}
 
 		// -------------------------------------------------------------------------------
-		// ArrayContains
+		// ArrayContains (string)
 		// -------------------------------------------------------------------------------
 		public static bool ArrayContains(string[] array, string text)
 		{
@@ -116,7 +207,7 @@ namespace wovencode
 		}
 
 		// -------------------------------------------------------------------------------
-		// RemoveFromArray
+		// RemoveFromArray (string)
 		// -------------------------------------------------------------------------------
 		public static string[] RemoveFromArray(string[] array, string text)
 		{
@@ -124,7 +215,7 @@ namespace wovencode
 		}
 	
 		// -------------------------------------------------------------------------------
-		// RemoveFromArray
+		// RemoveFromArray (int)
 		// -------------------------------------------------------------------------------
 		public static int[] RemoveFromArray(int[] array, int number)
 		{

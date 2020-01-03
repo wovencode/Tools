@@ -76,6 +76,7 @@ namespace wovencode
 		
 		// -------------------------------------------------------------------------------
 		// CalculateMD5
+		// not recommended on very large files
 		// -------------------------------------------------------------------------------
 		public static string CalculateMD5(string filepath)
 		{
@@ -90,7 +91,6 @@ namespace wovencode
 		}
 		
 		// ================================= OTHER =======================================
-		
 		
 		// -------------------------------------------------------------------------------
 		// Returns the name of the passed method

@@ -84,34 +84,34 @@ public static partial class Extensions
 	// -----------------------------------------------------------------------------------
 	// Removes all previous listeners and adds the new listener (for onClick etc.)
 	// -----------------------------------------------------------------------------------
-    public static void SetListener(this UnityEvent uEvent, UnityAction call)
+    public static void SetListener(this UnityEvent _event, UnityAction _call)
     {
-        uEvent.RemoveAllListeners();
-        uEvent.AddListener(call);
+        _event.RemoveAllListeners();
+        _event.AddListener(_call);
     }
 	// -----------------------------------------------------------------------------------
-	// Removes all previous listeners and adds the new listener (für onValueChanged etc.)
+	// Removes all previous listeners and adds the new listener (for onValueChanged etc.)
 	// -----------------------------------------------------------------------------------
-    public static void SetListener<T>(this UnityEvent<T> uEvent, UnityAction<T> call)
+    public static void SetListener<T>(this UnityEvent<T> _event, UnityAction<T> _call)
     {
-        uEvent.RemoveAllListeners();
-        uEvent.AddListener(call);
+        _event.RemoveAllListeners();
+        _event.AddListener(_call);
     }
 	
 	// -----------------------------------------------------------------------------------
 	// check if a list has duplicates
 	// -----------------------------------------------------------------------------------
-    public static bool HasDuplicates<T>(this List<T> list)
+    public static bool HasDuplicates<T>(this List<T> _list)
     {
-        return list.Count != list.Distinct().Count();
+        return _list.Count != _list.Distinct().Count();
     }
     
 	// -----------------------------------------------------------------------------------
 	// find all duplicates in a list
 	// -----------------------------------------------------------------------------------
-    public static List<U> FindDuplicates<T, U>(this List<T> list, Func<T, U> keySelector)
+    public static List<U> FindDuplicates<T, U>(this List<T> _list, Func<T, U> _keySelector)
     {
-        return list.GroupBy(keySelector)
+        return _list.GroupBy(_keySelector)
                    .Where(group => group.Count() > 1)
                    .Select(group => group.Key).ToList();
     }

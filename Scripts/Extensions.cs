@@ -80,6 +80,23 @@ public static partial class Extensions
 		
         return num.ToString();
     } 
+    
+	// -----------------------------------------------------------------------------------
+	// Removes all previous listeners and adds the new listener (for onClick etc.)
+	// -----------------------------------------------------------------------------------
+    public static void SetListener(this UnityEvent uEvent, UnityAction call)
+    {
+        uEvent.RemoveAllListeners();
+        uEvent.AddListener(call);
+    }
+	// -----------------------------------------------------------------------------------
+	// Removes all previous listeners and adds the new listener (für onValueChanged etc.)
+	// -----------------------------------------------------------------------------------
+    public static void SetListener<T>(this UnityEvent<T> uEvent, UnityAction<T> call)
+    {
+        uEvent.RemoveAllListeners();
+        uEvent.AddListener(call);
+    }
 	
 	// -----------------------------------------------------------------------------------
 	// check if a list has duplicates

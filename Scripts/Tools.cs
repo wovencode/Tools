@@ -24,8 +24,9 @@ namespace wovencode
 	public partial class Tools
 	{
 	
-		protected const char CONST_DELIMITER 	= ';';
-		protected const int MAX_LENGTH_NAME 	= 16;
+		protected const char 	CONST_DELIMITER 	= ';';
+		protected const int 	MIN_LENGTH_NAME		= 4;
+		protected const int 	MAX_LENGTH_NAME 	= 16;
 	
 		protected static string sOldChecksum, sNewChecksum	= "";
 	
@@ -119,7 +120,9 @@ namespace wovencode
 		// -------------------------------------------------------------------------------
 		public static bool IsAllowedName(string _text)
 		{
-			return _text.Length <= MAX_LENGTH_NAME && Regex.IsMatch(_text, @"^[a-zA-Z0-9_]+$");
+			return _text.Length >= MIN_LENGTH_NAME && 
+					_text.Length <= MAX_LENGTH_NAME &&
+					Regex.IsMatch(_text, @"^[a-zA-Z0-9_]+$");
 		}
 	
 		// -------------------------------------------------------------------------------

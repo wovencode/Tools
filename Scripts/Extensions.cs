@@ -99,23 +99,16 @@ public static partial class Extensions
     }
 	
 	// -----------------------------------------------------------------------------------
-	// check if a list has duplicates
+	// HasDuplicates
+	// checks if a list contains any duplicates
+	// better performance than GroupBy or Distinct in most cases
 	// -----------------------------------------------------------------------------------
-    public static bool HasDuplicates<T>(this List<T> _list)
-    {
-        return _list.Count != _list.Distinct().Count();
-    }
-    
-	// -----------------------------------------------------------------------------------
-	// find all duplicates in a list
-	// -----------------------------------------------------------------------------------
-    public static List<U> FindDuplicates<T, U>(this List<T> _list, Func<T, U> _keySelector)
-    {
-        return _list.GroupBy(_keySelector)
-                   .Where(group => group.Count() > 1)
-                   .Select(group => group.Key).ToList();
-    }
-	
+	public static bool HasDuplicates<T>(this IEnumerable<T> list)
+	{
+    	var hashset = new HashSet<T>();
+    	return list.Any(x => !hashset.Add(x));
+	}
+		
 	// -----------------------------------------------------------------------------------
 	
 }

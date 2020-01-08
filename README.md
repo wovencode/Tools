@@ -26,6 +26,7 @@ Requirements
 Contains Open-Source Code
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 * Suriyun DevExtension (https://github.com/insthync/unity-dev-extension)
+* Suriyun Editor Utilties (https://github.com/insthync/UnityEditorUtils)
 
 Documentation
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

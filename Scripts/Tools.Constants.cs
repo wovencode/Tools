@@ -6,6 +6,9 @@ using wovencode;
 
 namespace wovencode {
 
-	public enum SortOrder {None, Priority, Name}	
+	public partial class Constants
+	{
+		
+	}
 	
 }

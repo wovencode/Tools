@@ -27,6 +27,9 @@ namespace wovencode
 		protected const char 	CONST_DELIMITER 	= ';';
 		protected const int 	MIN_LENGTH_NAME		= 4;
 		protected const int 	MAX_LENGTH_NAME 	= 16;
+		
+		protected const int		MIN_VALUE_TOKEN		= 1000;
+		protected const int		MAX_VALUE_TOKEN		= 9999;
 	
 		protected static string sOldChecksum, sNewChecksum	= "";
 	
@@ -134,7 +137,23 @@ namespace wovencode
 		{
 			return !String.IsNullOrWhiteSpace(_text);
 		}
-	
+		
+		// -------------------------------------------------------------------------------
+		// Very simple numeric token validation
+		// -------------------------------------------------------------------------------
+		public static bool IsAllowedToken(int _token)
+		{
+			return _token >= MIN_VALUE_TOKEN && _token <= MAX_VALUE_TOKEN;
+		}
+		
+		// -------------------------------------------------------------------------------
+		// Very simple numeric token generation (4 digit code from 1000 to 9999)
+		// -------------------------------------------------------------------------------
+		public static int GenerateToken()
+		{
+			return UnityEngine.Random.Range(MIN_VALUE_TOKEN, MAX_VALUE_TOKEN);
+		}
+		
 		// -------------------------------------------------------------------------------
 		public static string PBKDF2Hash(string text, string salt)
 		{

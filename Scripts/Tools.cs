@@ -50,7 +50,7 @@ namespace wovencode
 #endif			
 		}
 		
-		// ================================= SECURITY ====================================
+		// =========================== (WEAK) LOCAL SECURITY =============================
 		
 		// -------------------------------------------------------------------------------
 		// GetChecksum
@@ -113,6 +113,23 @@ namespace wovencode
 			{
 				return SystemInfo.deviceUniqueIdentifier.ToString();
 			}
+		}
+		
+		// -------------------------------------------------------------------------------
+		// GetArgumentInt
+		// retrieves an int value that is part of command line arguments this process was
+		// started with (alyways null on android - makes sense on an OS capable of hosting
+		// a server only)
+		// -------------------------------------------------------------------------------
+		public static int GetArgumentInt(string _name)
+		{
+			String[] args = System.Environment.GetCommandLineArgs();
+			if (args != null)
+			{
+				int _int = args.ToList().FindIndex(arg => arg == "-"+_name);
+				return 0 <= _int && _int < args.Length - 1 ? int.Parse(args[_int + 1]) : 0;
+			}
+			return 0;
 		}
 		
 		// ============================== VALIDATION =====================================

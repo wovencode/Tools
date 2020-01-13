@@ -1,11 +1,12 @@
 ﻿// =======================================================================================
-// Custom Events
+// Wovencore
 // by Weaver (Fhiz)
 // MIT licensed
 // =======================================================================================
 
 using wovencode;
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace wovencode
@@ -22,6 +23,9 @@ namespace wovencode
 	
 	[System.Serializable]
 	public class UnityEventBool : UnityEvent<bool> {}
+	
+	[System.Serializable]
+	public class UnityEventGameObject : UnityEvent<GameObject> {}
 	
 }
 

@@ -60,7 +60,7 @@ namespace wovencode
 			
 			sNewChecksum = CalculateMD5(filepath);
 		
-			sOldChecksum = PlayerPrefs.GetString("CS", "");
+			sOldChecksum = PlayerPrefs.GetString(Constants.PP_CHECKSUM, "");
 			
 			if (string.IsNullOrWhiteSpace(sOldChecksum))
 				SetChecksum(filepath);
@@ -75,7 +75,7 @@ namespace wovencode
 		public static void SetChecksum(string filepath)
 		{
 			sNewChecksum = CalculateMD5(filepath);
-			PlayerPrefs.SetString("CS", sNewChecksum);
+			PlayerPrefs.SetString(Constants.PP_CHECKSUM, sNewChecksum);
 		}
 		
 		// -------------------------------------------------------------------------------

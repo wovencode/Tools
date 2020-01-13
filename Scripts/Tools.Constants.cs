@@ -1,4 +1,9 @@
-﻿
+﻿// =======================================================================================
+// Wovencore
+// by Weaver (Fhiz)
+// MIT licensed
+// =======================================================================================
+
 using System;
 using System.Text;
 using UnityEngine;
@@ -13,10 +18,10 @@ namespace wovencode {
 			Names of variables saved in player preferences:
 		*/
 		
-		public const string PP_CHECKSUM 	= "CS";
-		public const string PP_USERNAME 	= "UserName";
-		public const string PP_PASSWORD 	= "UserPass";	
-		public const string PP_LASTSERVER 	= "LastServer";
+		public const string PlayerPrefsChecksum 	= "CS";
+		public const string PlayerPrefsUserName 	= "UserName";
+		public const string PlayerPrefsPassword 	= "UserPass";	
+		public const string PlayerPrefsLastServer 	= "LastServer";
 		
 	}
 	

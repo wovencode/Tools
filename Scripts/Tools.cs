@@ -62,7 +62,7 @@ namespace wovencode
 			
 			sNewChecksum = CalculateMD5(filepath);
 		
-			sOldChecksum = PlayerPrefs.GetString(Constants.PP_CHECKSUM, "");
+			sOldChecksum = PlayerPrefs.GetString(Constants.PlayerPrefsChecksum, "");
 			
 			if (string.IsNullOrWhiteSpace(sOldChecksum))
 				SetChecksum(filepath);
@@ -77,7 +77,7 @@ namespace wovencode
 		public static void SetChecksum(string filepath)
 		{
 			sNewChecksum = CalculateMD5(filepath);
-			PlayerPrefs.SetString(Constants.PP_CHECKSUM, sNewChecksum);
+			PlayerPrefs.SetString(Constants.PlayerPrefsChecksum, sNewChecksum);
 		}
 		
 		// -------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ namespace wovencode
 		// Note: Arguments are always null on android - their usage only makes sense on
 		// an OS capable of hosting a server
 		// -------------------------------------------------------------------------------
-		public string GetProcessPath
+		public static string GetProcessPath
 		{
 			get
 			{

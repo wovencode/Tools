@@ -1,5 +1,5 @@
 // =======================================================================================
-// Tools
+// Wovencore
 // by Weaver (Fhiz)
 // MIT licensed
 // =======================================================================================
@@ -25,9 +25,11 @@ namespace wovencode
 	{
 	
 		protected const char 	CONST_DELIMITER 	= ';';
+		
 		protected const int 	MIN_LENGTH_NAME		= 4;
 		protected const int 	MAX_LENGTH_NAME 	= 16;
 		
+		// Tokens are required for server switch (security)
 		protected const int		MIN_VALUE_TOKEN		= 1000;
 		protected const int		MAX_VALUE_TOKEN		= 9999;
 	
@@ -118,8 +120,9 @@ namespace wovencode
 		// -------------------------------------------------------------------------------
 		// GetArgumentInt
 		// retrieves an int value that is part of command line arguments this process was
-		// started with (alyways null on android - makes sense on an OS capable of hosting
-		// a server only)
+		// started with 
+		// Note: Arguments are always null on android - their usage only makes sense on
+		// an OS capable of hosting a server
 		// -------------------------------------------------------------------------------
 		public static int GetArgumentInt(string _name)
 		{
@@ -132,6 +135,34 @@ namespace wovencode
 			return 0;
 		}
 		
+		// -------------------------------------------------------------------------------
+		// GetArgumentsString
+		// Note: The first argument is always the process name or empty
+		// Note: Arguments are always null on android - their usage only makes sense on
+		// an OS capable of hosting a server
+		// -------------------------------------------------------------------------------
+		public static string GetArgumentsString
+		{
+			get {
+				String[] args = System.Environment.GetCommandLineArgs();
+				return args != null ? String.Join(" ", args.Skip(1).ToArray()) : "";
+			}
+		}
+
+		// -------------------------------------------------------------------------------
+		// GetProcessPath
+		// Note: Arguments are always null on android - their usage only makes sense on
+		// an OS capable of hosting a server
+		// -------------------------------------------------------------------------------
+		public string GetProcessPath
+		{
+			get
+			{
+				String[] args = System.Environment.GetCommandLineArgs();
+				return args != null ? args[0] : "";
+			}
+		}
+	
 		// ============================== VALIDATION =====================================
 		
 		// -------------------------------------------------------------------------------

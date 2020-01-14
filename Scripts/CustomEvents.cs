@@ -8,6 +8,7 @@ using wovencode;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Mirror;
 
 namespace wovencode
 {
@@ -26,6 +27,9 @@ namespace wovencode
 	
 	[System.Serializable]
 	public class UnityEventGameObject : UnityEvent<GameObject> {}
+	
+	[System.Serializable]
+	public class UnityEventConnection : UnityEvent<NetworkConnection> {}
 	
 }
 

@@ -107,9 +107,9 @@ namespace wovencode
 		}
 		
 		// -------------------------------------------------------------------------------
-		// GetUserId
+		// GetDeviceId
 		// -------------------------------------------------------------------------------
-		public static string GetUserId
+		public static string GetDeviceId
 		{
 			get
 			{

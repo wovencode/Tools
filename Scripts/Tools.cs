@@ -96,6 +96,27 @@ namespace wovencode
 			}
 		}
 		
+		// -------------------------------------------------------------------------------
+		// GetDeterministicHashCode
+		// for arrays
+		// -------------------------------------------------------------------------------
+		public static int GetDeterministicHashCode(object[] array)
+		{
+			if (array != null)
+			{
+				unchecked
+				{
+					int hash = 17;
+
+					foreach (var item in array)
+						hash = hash * 23 + ((item != null) ? item.GetHashCode() : 0);
+
+					return hash;
+				}
+			}
+			return 0;
+		}
+				
 		// ================================= OTHER =======================================
 		
 		// -------------------------------------------------------------------------------

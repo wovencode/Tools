@@ -24,6 +24,7 @@ public static partial class Extensions
 			 source.Substring(index + find.Length);
 	}
 
+	
 	// -----------------------------------------------------------------------------------
 	// Converts any string into a hash
 	// 64 bit safe and deterministic, generated values rarely change

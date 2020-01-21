@@ -2,9 +2,9 @@
 using System;
 using System.Text;
 using UnityEngine;
-using wovencode;
+using Wovencode;
 
-namespace wovencode {
+namespace Wovencode {
 
 	public enum SortOrder {None, Priority, Name}	
 	

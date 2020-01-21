@@ -7,9 +7,9 @@
 using System;
 using System.Text;
 using UnityEngine;
-using wovencode;
+using Wovencode;
 
-namespace wovencode {
+namespace Wovencode {
 
 	public partial class Constants
 	{

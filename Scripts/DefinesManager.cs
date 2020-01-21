@@ -5,13 +5,13 @@
 // =======================================================================================
 #if UNITY_EDITOR
 
-using wovencode;
+using Wovencode;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace wovencode
+namespace Wovencode
 {
 
 	[InitializeOnLoad]

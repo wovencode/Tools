@@ -6,9 +6,9 @@
 
 using System;
 using UnityEngine;
-using wovencode;
+using Wovencode;
 
-namespace wovencode {
+namespace Wovencode {
 	
 	// ===================================================================================
 	// Requirements

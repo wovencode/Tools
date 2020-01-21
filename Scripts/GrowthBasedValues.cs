@@ -4,11 +4,11 @@
 // MIT licensed
 // =======================================================================================
 
-using wovencode;
+using Wovencode;
 using System;
 using UnityEngine;
 
-namespace wovencode
+namespace Wovencode
 {
 
 	[Serializable]

@@ -6,12 +6,12 @@
 
 #if UNITY_EDITOR
 
-using wovencode;
+using Wovencode;
 using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace wovencode
+namespace Wovencode
 {
 
 	[InitializeOnLoad]

@@ -5,12 +5,12 @@
 // =======================================================================================
 
 using UnityEngine;
-using wovencode;
+using Wovencode;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace wovencode
+namespace Wovencode
 {
 	
 	// ===================================================================================

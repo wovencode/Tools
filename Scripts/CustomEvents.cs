@@ -4,13 +4,13 @@
 // MIT licensed
 // =======================================================================================
 
-using wovencode;
+using Wovencode;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Mirror;
 
-namespace wovencode
+namespace Wovencode
 {
 	
 	[System.Serializable]

@@ -15,6 +15,15 @@ public static partial class Extensions
 {
 	
 	// -------------------------------------------------------------------------------
+	// ToInt
+	// Converts a boolean value to an int (0/1)
+	// -------------------------------------------------------------------------------
+	public static int ToInt(this bool value)
+	{
+		return (value) ? 1 : 0;
+	}
+	
+	// -------------------------------------------------------------------------------
 	// ReplaceFirstInstance
 	// -------------------------------------------------------------------------------
 	public static string ReplaceFirstInstance(this string source, string find, string replace)
@@ -24,7 +33,6 @@ public static partial class Extensions
 			 source.Substring(index + find.Length);
 	}
 
-	
 	// -----------------------------------------------------------------------------------
 	// Converts any string into a hash
 	// 64 bit safe and deterministic, generated values rarely change

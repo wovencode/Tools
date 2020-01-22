@@ -5,46 +5,59 @@
 // =======================================================================================
 
 using Wovencode;
+using Wovencode.Debug;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Wovencode
+namespace Wovencode.Debug
 {
 	
 	// ===================================================================================
-	// DebugHelper
+	// Debug
 	// ===================================================================================
-	[System.Serializable]
-	public partial class DebugHelper
+	public partial class debug
 	{
 		
-		public bool debugMode;
+		protected const bool debugMode = true;
 		
 		// ======================= PUBLIC METHODS - DEBUG ================================
 		
 		// -------------------------------------------------------------------------------
-		public void Log(string message)
+		// Log
+		// @debugMode
+		// -------------------------------------------------------------------------------
+		public static void Log(string message)
 		{
 			if (debugMode)
-				Debug.Log(message);
+				UnityEngine.Debug.Log(message);
 		}
 		
 		// -------------------------------------------------------------------------------
-		public void LogWarning(string message)
+		// LogWarning
+		// @debugMode
+		// -------------------------------------------------------------------------------
+		public static void LogWarning(string message)
 		{
 			if (debugMode)
-				Debug.LogWarning(message);
+				UnityEngine.Debug.LogWarning(message);
 		}
 		
 		// -------------------------------------------------------------------------------
-		public void LogError(string message)
+		// LogError
+		// @debugMode
+		// -------------------------------------------------------------------------------
+		public static void LogError(string message)
 		{
 			if (debugMode)
-				Debug.LogError(message);
+				UnityEngine.Debug.LogError(message);
 		}
 		
 		// -------------------------------------------------------------------------------
-
+		
+		// -------------------------------------------------------------------------------
+		
 	}
 
 }

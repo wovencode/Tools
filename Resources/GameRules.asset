@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffec39ba1c9ae40faa90fe864b177d43, type: 3}
   m_Name: GameRules
   m_EditorClassIdentifier: 
-  maxPlayersPerUser: 4
+  maxPlayersPerUser: 99
+  maxUsersPerDevice: 99
+  maxUsersPerEmail: 99

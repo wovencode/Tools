@@ -5,13 +5,13 @@
 // =======================================================================================
 
 using Wovencode;
-using Wovencode.Debugging;
+using Wovencode.DebugManager;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Wovencode.Debugging
+namespace Wovencode.DebugManager
 {
 	
 	// ===================================================================================

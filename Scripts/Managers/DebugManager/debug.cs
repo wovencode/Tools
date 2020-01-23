@@ -5,13 +5,13 @@
 // =======================================================================================
 
 using Wovencode;
-using Wovencode.Debugging;
+using Wovencode.DebugManager;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Wovencode.Debugging
+namespace Wovencode.DebugManager
 {
 	
 	// ===================================================================================
@@ -19,8 +19,6 @@ namespace Wovencode.Debugging
 	// ===================================================================================
 	public partial class debug
 	{
-		
-		protected const bool debugMode = true;
 		
 		// ======================= PUBLIC METHODS - DEBUG ================================
 		
@@ -30,7 +28,7 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public static void Log(string message)
 		{
-			if (debugMode)
+			if (ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.Log(message);
 		}
 		
@@ -40,7 +38,7 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public static void LogWarning(string message)
 		{
-			if (debugMode)
+			if (ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.LogWarning(message);
 		}
 		
@@ -50,7 +48,7 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public static void LogError(string message)
 		{
-			if (debugMode)
+			if (ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.LogError(message);
 		}
 		

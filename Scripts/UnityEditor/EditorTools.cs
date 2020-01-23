@@ -13,42 +13,62 @@ using UnityEngine;
 
 namespace Wovencode
 {
-
+	
+	// ===================================================================================
+	// EditorTools
+	// ===================================================================================
 	[InitializeOnLoad]
 	public static partial class EditorTools
 	{
-	
+		
+		public static string[] definesArray;
+		public static string definesString;
+		public static BuildTargetGroup buildTargetGroup;
+		
 		// -------------------------------------------------------------------------------
+		// AddScriptingDefine
 		// Removes the passed define (string) from scripting defines of the current target
 		// platform, without touching other defines.
 		// -------------------------------------------------------------------------------
 		public static void AddScriptingDefine(string define)
 		{
-			BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-			string definestring = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-			string[] defines = definestring.Split(';');
-
-			if (Tools.ArrayContains(defines, define))
+			if (HasScriptingDefine(define))
 				return;
-
-			PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, (definestring + ";" + define));
+				
+			PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, (definesString + ";" + define));
 		}
 
 		// -------------------------------------------------------------------------------
+		// RemoveScriptingDefine
 		// Adds the passed define (string) to scripting defines of the current target 
 		// platform, without adding duplicates.
 		// -------------------------------------------------------------------------------
 		public static void RemoveScriptingDefine(string define)
 		{
-			BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-			string definestring = PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
-			string[] defines = definestring.Split(';');
+			if (!HasScriptingDefine(define))
+				return;
 
-			defines = Tools.RemoveFromArray(defines, define);
+			definesArray = Tools.RemoveFromArray(definesArray, define);
 
-			definestring = string.Join(";", defines);
+			definesString = string.Join(";", definesArray);
 
-			PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, (definestring));
+			PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, (definesString));
+		}
+		
+		// -------------------------------------------------------------------------------
+		// HasScriptingDefine
+		// 
+		// -------------------------------------------------------------------------------
+		public static bool HasScriptingDefine(string define)
+		{
+			buildTargetGroup 	= EditorUserBuildSettings.selectedBuildTargetGroup;
+			definesString 		= PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup);
+			definesArray 		= definesString.Split(';');
+
+			if (Tools.ArrayContains(definesArray, define))
+				return true;
+			
+			return false;
 		}
 	
 		// -------------------------------------------------------------------------------

@@ -5,13 +5,13 @@
 // =======================================================================================
 
 using Wovencode;
-using Wovencode.Debugging;
+using Wovencode.DebugManager;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Wovencode.Debugging
+namespace Wovencode.DebugManager
 {
 	
 	// ===================================================================================
@@ -24,6 +24,15 @@ namespace Wovencode.Debugging
 		public bool debugMode;
 		
 		protected List<DebugProfile> debugProfiles = new List<DebugProfile>();
+		
+		// -------------------------------------------------------------------------------
+		// Init (Constructor)
+		// -------------------------------------------------------------------------------
+		public void Init()
+		{
+			if (!debugMode)
+				debugMode = ProjectConfigTemplate.singleton.globalDebugMode;
+		}
 		
 		// ======================= PUBLIC METHODS - DEBUG ================================
 		
@@ -66,6 +75,9 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public void StartProfile(string name)
 		{
+			if (!debugMode)
+				return;
+				
 			if (HasProfile(name))
 				RestartProfile(name);
 			else
@@ -77,6 +89,9 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public void StopProfile(string name)
 		{
+			if (!debugMode)
+				return;
+				
 			int index = GetProfileIndex(name);
 			if (index != -1)
 				debugProfiles[index].Stop();
@@ -87,6 +102,9 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public void PrintProfile(string name)
 		{
+			if (!debugMode)
+				return;
+				
 			int index = GetProfileIndex(name);
 			if (index != -1)
 				Log(debugProfiles[index].Print);
@@ -97,6 +115,9 @@ namespace Wovencode.Debugging
 		// -------------------------------------------------------------------------------
 		public void Reset()
 		{
+			if (!debugMode)
+				return;
+				
 			foreach (DebugProfile profile in debugProfiles)
 				profile.Reset();
 		}

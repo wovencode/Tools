@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4c8573f4d784adc93c5266d3160c6c, type: 3}
+  m_Name: ModulesConfiguration
+  m_EditorClassIdentifier: 
+  modules:
+  - name: DatabaseManager
+    define: wDB
+    version: 1.1
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode.Database
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS
+    comments: none
+  - name: NetworkManager
+    define: wNETWORK
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode.Network
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS,wUI,wDB
+    comments: none
+  - name: PlayerComponent
+    define: wPLAYER
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS,wDB,wNETWORK,wSYNCABLE,wTEMPLATES
+    comments: none
+  - name: ScriptableTemplates
+    define: wTEMPLATES
+    version: 1.3
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS
+    comments: none
+  - name: SyncableComponent
+    define: wSYNCABLE
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS,wDB
+    comments: none
+  - name: Tools
+    define: wTOOLS
+    version: 1.3
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: 
+    comments: none
+  - name: UI
+    define: wUI
+    version: 1.3
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode.UI
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS
+    comments: none
+  - name: PlayerAspects
+    define: wASPECTS
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wPLAYER
+    comments: none
+  - name: PlayerCurrencies
+    define: wCURRENCY
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wPLAYER
+    comments: none
+  - name: PlayerGameEvents
+    define: wGAMEVENTS
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wPLAYER
+    comments: none
+  - name: PlayerStatistics
+    define: wSTATISTICS
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wPLAYER
+    comments: none
+  - name: NetworkZones
+    define: wZONES
+    version: 1.0
+    unity3dVersion: 2018.x-2019.x
+    nameSpace: Wovencode
+    package: Wovencore
+    author: Fhiz
+    dependencies: wTOOLS,wNETWORK,wDB
+    comments: none

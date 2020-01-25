@@ -57,7 +57,7 @@ namespace Wovencode
 		
 		// -------------------------------------------------------------------------------
 		// HasScriptingDefine
-		// 
+		// Checks if the provided string is present in scripting defines
 		// -------------------------------------------------------------------------------
 		public static bool HasScriptingDefine(string define)
 		{

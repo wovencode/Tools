@@ -29,8 +29,6 @@ namespace Wovencode
 		[Header("Game Rules")]
 		public GameRulesTemplate gameRulesTemplate;
 		
-		
-		
 		// -----------------------------------------------------------------------------------
 	
 	}

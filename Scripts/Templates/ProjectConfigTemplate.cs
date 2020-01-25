@@ -56,14 +56,14 @@ namespace Wovencode
         }
         else if (networkType == NetworkType.HostAndPlay)
         {
-            EditorTools.RemoveScriptingDefine(isServer);
+            EditorTools.AddScriptingDefine(isServer);
             EditorTools.AddScriptingDefine(isClient);
             debug.Log("[ProjectConfig] Switched to HOST & PLAY mode.");
         }
         else
         {
             EditorTools.AddScriptingDefine(isClient);
-            EditorTools.AddScriptingDefine(isServer);
+            EditorTools.RemoveScriptingDefine(isServer);
             debug.Log("[ProjectConfig] Switched to CLIENT mode.");
         }
 #endif

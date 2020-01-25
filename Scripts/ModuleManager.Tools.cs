@@ -31,7 +31,7 @@ namespace Wovencode.Modules
 			
 			module.name				= "Tools";
 			module.define			= "wTOOLS";
-			module.version       	= "1.3";
+			module.version       	= "PreAlpha1";
 			module.unity3dVersion 	= "2018.x-2019.x";
 			module.nameSpace		= "Wovencode";
         	module.package         	= "Wovencore";

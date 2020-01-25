@@ -9,7 +9,7 @@ using Wovencode.DebugManager;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 
 namespace Wovencode.DebugManager
 {
@@ -28,7 +28,7 @@ namespace Wovencode.DebugManager
 		// -------------------------------------------------------------------------------
 		public static void Log(string message)
 		{
-			if (ProjectConfigTemplate.singleton.globalDebugMode)
+			if (ProjectConfigTemplate.singleton && ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.Log(message);
 		}
 		
@@ -38,7 +38,7 @@ namespace Wovencode.DebugManager
 		// -------------------------------------------------------------------------------
 		public static void LogWarning(string message)
 		{
-			if (ProjectConfigTemplate.singleton.globalDebugMode)
+			if (ProjectConfigTemplate.singleton && ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.LogWarning(message);
 		}
 		
@@ -48,7 +48,7 @@ namespace Wovencode.DebugManager
 		// -------------------------------------------------------------------------------
 		public static void LogError(string message)
 		{
-			if (ProjectConfigTemplate.singleton.globalDebugMode)
+			if (ProjectConfigTemplate.singleton && ProjectConfigTemplate.singleton.globalDebugMode)
 				UnityEngine.Debug.LogError(message);
 		}
 		

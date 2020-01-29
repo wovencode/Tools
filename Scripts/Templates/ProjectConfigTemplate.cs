@@ -5,6 +5,7 @@
 // =======================================================================================
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Wovencode;
@@ -25,6 +26,9 @@ namespace Wovencode
 		[SerializeField]protected NetworkType networkType;
 		public bool globalDebugMode;
 		
+		[Header("Servers")]
+		public ServerInfoTemplate[] serverList;
+				
 		static ProjectConfigTemplate _instance;
 		
 		protected const string isServer = "_SERVER";

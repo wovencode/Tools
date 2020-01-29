@@ -1,8 +1,3 @@
-// =======================================================================================
-// Wovencore
-// by Weaver (Fhiz)
-// MIT licensed
-// =======================================================================================
 
 using Wovencode;
 using System;
@@ -97,10 +92,11 @@ namespace Wovencode
 		}
 		
 		// -------------------------------------------------------------------------------
-		// GetDeterministicHashCode
-		// for arrays
+		// GetArrayHashCode
+		// for arrays, not compatible with the GetDeterministicHashCode function of strings
+		// not suited for permanent storage !
 		// -------------------------------------------------------------------------------
-		public static int GetDeterministicHashCode(object[] array)
+		public static int GetArrayHashCode(object[] array)
 		{
 			if (array != null)
 			{
@@ -118,14 +114,6 @@ namespace Wovencode
 		}
 				
 		// ================================= OTHER =======================================
-		
-		// -------------------------------------------------------------------------------
-		// Returns the name of the passed method
-		// -------------------------------------------------------------------------------
-		public static string GetMethodName(Func<IEnumerator> method)
-		{
-			return method.Method.Name;
-		}
 		
 		// -------------------------------------------------------------------------------
 		// GetDeviceId

@@ -312,7 +312,31 @@ namespace Wovencode
 		{
 			return array.Where(x => x != number).ToArray();
 		}
-	
+		
+		// ========================= PLAYER PREFERENCES ==================================
+		
+		// -------------------------------------------------------------------------------
+		// PlayerPrefsSetString
+		// Only set if exists (and is equal to "oldValue"") or "set" is true
+		// -------------------------------------------------------------------------------
+		public static void PlayerPrefsSetString(string keyName, string newValue, string oldValue="", bool set=false)
+		{
+			if (PlayerPrefs.HasKey(keyName) || set)
+				if ((!set && PlayerPrefs.GetString(keyName) == oldValue) || (!set && oldValue == "") || set)
+					PlayerPrefs.SetString(keyName, newValue);
+		}
+		
+		// -------------------------------------------------------------------------------
+		// PlayerPrefsSetInt
+		// Only set if exists (and is equal to "oldValue"") or "set" is true
+		// -------------------------------------------------------------------------------
+		public static void PlayerPrefsSetInt(string keyName, int newValue, int oldValue=-1, bool set=false)
+		{
+			if (PlayerPrefs.HasKey(keyName) || set)
+				if ((!set && PlayerPrefs.GetInt(keyName) == oldValue) || (!set && oldValue == -1) || set)
+					PlayerPrefs.SetInt(keyName, newValue);
+		}
+		
 		// -------------------------------------------------------------------------------
 	}
 

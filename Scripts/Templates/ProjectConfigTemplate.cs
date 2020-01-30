@@ -23,7 +23,11 @@ namespace Wovencode
 		
 		[Header("Servers")]
 		public ServerInfoTemplate[] serverList;
-				
+		
+		[Header("Spawnable Prefabs Folders")]
+		[Tooltip("Adding spawnable prefabs to network manager will only search in the folders below")]
+		public string[] spawnablePrefabFolders;		
+		
 		static ProjectConfigTemplate _instance;
 		
 		protected const string isServer = "_SERVER";
@@ -41,33 +45,40 @@ namespace Wovencode
 				return _instance;
 			}
 		}
-	// -----------------------------------------------------------------------------------
-    // OnValidate
-    // -----------------------------------------------------------------------------------
-    public void OnValidate()
-    {
+		
+		// -----------------------------------------------------------------------------------
+		// OnValidate
+		// -----------------------------------------------------------------------------------
+		public void OnValidate()
+		{
 #if UNITY_EDITOR
-        if (networkType == NetworkType.Server)
-        {
-            EditorTools.RemoveScriptingDefine(isClient);
-            EditorTools.AddScriptingDefine(isServer);
-            debug.Log("[ProjectConfig] Switched to SERVER mode.");
-        }
-        else if (networkType == NetworkType.HostAndPlay)
-        {
-            EditorTools.AddScriptingDefine(isServer);
-            EditorTools.AddScriptingDefine(isClient);
-            debug.Log("[ProjectConfig] Switched to HOST & PLAY mode.");
-        }
-        else
-        {
-            EditorTools.AddScriptingDefine(isClient);
-            EditorTools.RemoveScriptingDefine(isServer);
-            debug.Log("[ProjectConfig] Switched to CLIENT mode.");
-        }
+			if (networkType == NetworkType.Server)
+			{
+				EditorTools.RemoveScriptingDefine(isClient);
+				EditorTools.AddScriptingDefine(isServer);
+				debug.Log("[ProjectConfig] Switched to SERVER mode.");
+			}
+			else if (networkType == NetworkType.HostAndPlay)
+			{
+				EditorTools.AddScriptingDefine(isServer);
+				EditorTools.AddScriptingDefine(isClient);
+				debug.Log("[ProjectConfig] Switched to HOST & PLAY mode.");
+			}
+			else if (networkType == NetworkType.Development)
+			{
+				EditorTools.AddScriptingDefine(isServer);
+				EditorTools.AddScriptingDefine(isClient);
+				debug.Log("[ProjectConfig] Switched to DEVELOPMENT mode.");
+			}
+			else
+			{
+				EditorTools.AddScriptingDefine(isClient);
+				EditorTools.RemoveScriptingDefine(isServer);
+				debug.Log("[ProjectConfig] Switched to CLIENT mode.");
+			}
 #endif
-    }
-    
+		}
+	
 		// -------------------------------------------------------------------------------
 	}
 

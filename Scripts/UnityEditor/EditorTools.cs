@@ -25,6 +25,60 @@ namespace Wovencode
 		public static string definesString;
 		public static BuildTargetGroup buildTargetGroup;
 		
+		// ============================== EDITOR PREFERENCES =============================
+		
+		// -------------------------------------------------------------------------------
+		// EditorPrefsUpdateString
+		// -------------------------------------------------------------------------------
+		public static string EditorPrefsUpdateString(string keyName, string value)
+		{	
+			if (EditorPrefs.HasKey(keyName))
+			{
+				
+				if (!String.IsNullOrWhiteSpace(value))
+				{
+					EditorPrefs.SetString(keyName, value);
+					return value;
+				}
+				else if (String.IsNullOrWhiteSpace(value))
+				{
+					return EditorPrefs.GetString(keyName);
+				}		
+			}
+			else
+			{
+				EditorPrefs.SetString(keyName, value);
+			}
+			return value;		
+		}
+		
+		// -------------------------------------------------------------------------------
+		// EditorPrefsUpdateInt
+		// -------------------------------------------------------------------------------
+		public static int EditorPrefsUpdateInt(string keyName, int value)
+		{	
+			if (EditorPrefs.HasKey(keyName))
+			{
+				
+				if (value != 0)
+				{
+					EditorPrefs.SetInt(keyName, value);
+					return value;
+				}
+				else if (value == 0)
+				{
+					return EditorPrefs.GetInt(keyName);
+				}		
+			}
+			else
+			{
+				EditorPrefs.SetInt(keyName, value);
+			}
+			return value;		
+		}
+		
+		// ============================== SCRIPTING DEFINES ==============================
+		
 		// -------------------------------------------------------------------------------
 		// AddScriptingDefine
 		// Removes the passed define (string) from scripting defines of the current target
